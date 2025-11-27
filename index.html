@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Recipe Parser & Nutrition</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <button class="mode-btn" onclick="toggleMode()">🌙 Dark</button>
+  <h1>Recipe Parser & Nutrition Analyzer</h1>
+
+  <main class="centered">
+
+    <!-- ---------- Recipe Parser (left) and Parsed Table (right) ---------- -->
+    <section class="box recipe-box">
+      <h2>Recipe Parser</h2>
+
+      <div class="recipe-grid">
+        <!-- left: text input -->
+        <div>
+          <label>Recipe Input</label>
+          <textarea id="recipeText" rows="10" placeholder="1 1/2 cups brown sugar, packed
+2 large eggs
+1/2 tsp salt"></textarea>
+
+          <div style="margin-top:8px;">
+            <button onclick="parseRecipe()">Parse →</button>
+            <button onclick="loadSample()">Sample</button>
+          </div>
+        </div>
+
+        <!-- right: parsed table -->
+        <div>
+          <h3>Parsed Ingredients</h3>
+          <table id="parsedTable">
+            <thead>
+              <tr>
+                <th>QTY</th><th>UNIT</th><th>INGREDIENT</th><th>NOTES</th>
+              </tr>
+            </thead>
+            <tbody id="parsedBody"></tbody>
+          </table>
+          
+        </div>
+      </div>
+      <img class="rounded" src="https://goodcheapeats.com/wp-content/uploads/2024/06/square-veggie-curry.jpg" height="80" width="80" alt="veggie curry">
+          <img class="rounded" src="https://masalaboxco.com/cdn/shop/files/ChickenChettinadRecipe.jpg?v=1702974105&width=1445"height="80" width="80" alt="chicken chettinad">
+          <img class="rounded" src="https://icebergdriveinn.com/cdn/shop/articles/Fast-Food-How-It-Has-Evolved-in-the-Past-Decades.jpg?v=1625683335"height="90" width="160" alt="fast food">
+    </section>
+
+    <!-- ---------- Nutrition Analyzer ---------- -->
+    <section class="box">
+      <h2>Nutrition Analyzer</h2>
+
+      <label>Food name</label>
+      <input id="foodInput" type="text" placeholder="e.g., rice, egg, banana">
+
+      <div class="row">
+        <div class="col">
+          <label>Quantity</label>
+          <input id="quantity" type="number" value="100">
+        </div>
+        <div class="col">
+          <label>Unit</label>
+          <select id="quantityUnit">
+            <option value="g">grams</option>
+            <option value="kg">kilograms</option>
+            <option value="cups">cups</option>
+            <option value="ml">ml</option>
+            <option value="tsp">tsp</option>
+          </select>
+        
+        </div>
+      </div>
+
+      <div style="margin-top:8px;">
+        <button onclick="analyzeFood()">Analyze</button>
+      </div>
+
+      <div id="nutritionOutput" class="mt"></div>
+      <canvas id="nutritionChart" width="300" height="300" class="mt"></canvas>
+      <div id="alternateFoods" class="mt"></div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
